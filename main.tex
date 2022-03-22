@@ -1,0 +1,83 @@
+% class, format, font size
+\documentclass[a4paper,14pt]{article}
+\usepackage[14pt]{extsizes}
+
+% encodings, locales
+\usepackage[utf8x]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+
+% geometry
+\usepackage[left=20mm,top=15mm,right=15mm,bottom=15mm,footskip=10mm,nohead]{geometry}
+\setlength{\parskip}{0.4\baselineskip}
+
+% math, figures
+\usepackage{amsmath,amssymb,amsbsy,amsfonts}
+\usepackage{graphics,mathtools}
+
+% links in text
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+% first paragraph indent
+\usepackage{indentfirst}
+% small font for captions
+\usepackage[font=small,labelfont=bf]{caption}
+% dots in caption numberings
+\captionsetup{labelsep = period}
+% to enable subfigures
+\usepackage{subcaption}
+% add bibliography to contents
+\usepackage[nottoc]{tocbibind}
+
+% toc customization
+\usepackage{tocloft}
+\setlength\cftparskip{1pt}
+\setlength\cftbeforesecskip{6pt}
+\setlength\cftaftertoctitleskip{2pt}
+
+% custom sections
+\usepackage{titlesec}
+\titleformat{\section}[hang]
+  {\bf\large}{\thesection.}{1ex}{}
+\titleformat{\subsection}[hang]
+  {\bf}{\thesubsection.}{1ex}{}
+\titleformat{\subsubsection}[hang]
+  {\it}{\thesubsubsection.}{1ex}{}
+\titleformat{\paragraph}[hang]
+  {\it}{}{}{}
+  
+ \let \savenumberline \numberline
+\def \numberline#1{\savenumberline{#1.}}
+
+\begin{document}
+
+% Title and intro
+\input tex/title.tex
+\tableofcontents
+\newpage
+\input tex/intro.tex
+\newpage
+
+% Theoretical part
+\input tex/statmodel/intro.tex
+\newpage
+\input tex/massmodel/intro.tex
+\newpage
+
+% Calculation part
+\input tex/reaclibmod/intro.tex
+\input tex/reaclibmod/weakfit.tex
+\newpage
+\input tex/simulation/intro.tex
+\newpage
+
+\input tex/bib.tex
+
+\end{document}
