@@ -1,0 +1,54 @@
+\subsection{Модификация базы данных REACLIB} \label{sec:ratelib}
+В настоящей работе скорости нейтронных захватов, полученные при помощи программы TALYS с использованием различных таблиц теоретических масс нейтроноизбыточных ядер, подставлялись в библиотеку астрофизических реакций REACLIB~\cite{reaclib2010}. В REACLIB скорость реакции $\lambda$ задается семью параметрами $a_i$ функции температуры $T$ (в ГК):
+\begin{equation}
+    \lambda = \exp \left[ a_0 + \sum_{i=1}^5 a_i T^{\frac{2i-5}{3}} + a_6 \ln T \right]
+    \label{eq:reaclib_format}
+\end{equation}
+
+Программа TALYS выдает результаты расчета скоростей в виде таблицы в астрофизическом диапазоне температур от $10^5$ до $10^{10}$~К. Для представления полученных нами скоростей реакций в формате REACLIB их необходимо аппроксимировать с помощью функции~(\ref{eq:reaclib_format}). В настоящей работе для этого использовался нелинейный метод наименьших квадратов с минимизацией по методу Левенберга--Марквардта (см., например,~\cite{levenberg1944}), реализованный в пакете научных вычислений scipy~\cite{scipy2020}. 
+
+Аппроксимация проводилась по равномерной сетке температур от $0.5$ до $6$~ГК с шагом $0.2$~ГК. Мы взяли не весь диапазон температур, в котором TALYS выдает результаты, чтобы добиться наилучшей точности в интересующей нас области $1-5$~ГК. Выбор длины шага обусловлен тем, что функция~(\ref{eq:reaclib_format}) оказалась склонна к осцилляциям на концах диапазона аппроксимации, возникающим при слишком густой сетке, а при указанном шаге они почти исчезают. Скорости реакции $(n,\gamma)$ на нейтроноизбыточных изотопах индия, тербия и свинца, полученные нами с помощью программы TALYS и аппроксимированные для представления в формате REACLIB, показаны на рис.~\ref{fig:ng_approx}. 
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{pics/n_in141.pdf}
+    \caption{${}^{141}$In}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{pics/n_in142.pdf}
+    \caption{${}^{142}$In}
+  \end{subfigure}
+  \\
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{pics/n_tb186.pdf}
+    \caption{${}^{186}$Tb}
+  \end{subfigure}
+  \hfil
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{pics/n_tb187.pdf}
+    \caption{${}^{187}$Tb}
+  \end{subfigure}
+  \\
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{pics/n_pb236.pdf}
+    \caption{${}^{236}$Pb}
+  \end{subfigure}
+  \hfil
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{pics/n_pb237.pdf}
+    \caption{${}^{237}$Pb}
+  \end{subfigure}
+
+  \caption{Скорости реакции $(n,\gamma)$ на некоторых нейтроноизбыточных изотопах индия, тербия и свинца, полученные с помощью программы TALYS с использованием разлинчых массовых моделей, и результаты их аппроксимации функцией~(\ref{eq:reaclib_format}).}
+  \label{fig:ng_approx}
+\end{figure}
+
+Для упрощения работы с базами данных астрофизических скоростей реакций в формате REACLIB в рамках настоящей работы на языке Python 3 был реализован и опубликован в открытом доустпе пакет ratelib, доступный для загрузки с помощью каталога Python-пакетов PyPI\footnote{\href{https://pypi.org/project/ratelib/}{https://pypi.org/project/ratelib/}}. Пакет ratelib поддерживает загрузку базы данных из текстового файла, представление нуклидов, скоростей реакций и их коллекций в виде объектов языка Python, аппроксимацию таблиц скоростей реакций с помощью функции~(\ref{eq:reaclib_format}) и вывод данных в формате REACLIB в текстовый файл.

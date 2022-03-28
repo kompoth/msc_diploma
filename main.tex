@@ -14,6 +14,7 @@
 % math, figures
 \usepackage{amsmath,amssymb,amsbsy,amsfonts}
 \usepackage{graphics,mathtools}
+\usepackage{listings}
 
 % links in text
 \usepackage{hyperref}
@@ -66,16 +67,18 @@
 \newpage
 
 % Theoretical part
-\input tex/statmodel/intro.tex
+\input tex/pt1_statmodel/intro.tex
 \newpage
-\input tex/massmodel/intro.tex
+\input tex/pt2_masses/intro.tex
 \newpage
 
 % Calculation part
-\input tex/reaclibmod/intro.tex
-\input tex/reaclibmod/weakfit.tex
+\input tex/pt3_reaclib/intro.tex
+\input tex/pt3_reaclib/talys.tex
+\input tex/pt3_reaclib/ratelib.tex
+\input tex/pt3_reaclib/weakfit.tex
 \newpage
-\input tex/simulation/intro.tex
+\input tex/pt4_skynet/intro.tex
 \newpage
 
 \input tex/outro.tex
