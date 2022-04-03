@@ -14,30 +14,6 @@
   \centering
   \begin{subfigure}{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{pics/ng_fit_in141.pdf}
-    \caption{${}^{141}$In}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{pics/ng_fit_in142.pdf}
-    \caption{${}^{142}$In}
-  \end{subfigure}
-  \\
-  \begin{subfigure}{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{pics/ng_fit_tb186.pdf}
-    \caption{${}^{186}$Tb}
-  \end{subfigure}
-  \hfil
-  \begin{subfigure}{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{pics/ng_fit_tb187.pdf}
-    \caption{${}^{187}$Tb}
-  \end{subfigure}
-  \\
-  \begin{subfigure}{0.48\textwidth}
-    \centering
     \includegraphics[width=\textwidth]{pics/ng_fit_pb236.pdf}
     \caption{${}^{236}$Pb}
   \end{subfigure}
@@ -47,12 +23,12 @@
     \includegraphics[width=\textwidth]{pics/ng_fit_pb237.pdf}
     \caption{${}^{237}$Pb}
   \end{subfigure}
-  \caption{Скорости реакции $(n,\gamma)$ на некоторых нейтроноизбыточных изотопах индия, тербия и свинца, полученные с помощью программы TALYS с использованием разлинчых массовых моделей, и результаты их аппроксимации функцией~(\ref{eq:reaclib_format}).}
+  \caption{Скорости реакции $(n,\gamma)$ на нейтроноизбыточных изотопах свинца ${}^{236}$Pb и ${}^{237}$Pb, полученные с помощью программы TALYS с использованием различных массовых моделей, и результаты их аппроксимации функцией~(\ref{eq:reaclib_format}).}
   \label{fig:ng_approx}
 \end{figure}
 
 \subsubsection{Пакет ratelib}
-Для упрощения работы с базами данных астрофизических скоростей реакций в формате REACLIB в рамках настоящей работы на языке Python 3 был реализован и опубликован в открытом доустпе пакет ratelib, доступный для загрузки с помощью каталога Python-пакетов PyPI\footnote{\href{https://pypi.org/project/ratelib/}{https://pypi.org/project/ratelib/}}. Пакет ratelib поддерживает загрузку базы данных из текстового файла, представление нуклидов, скоростей реакций и их коллекций в виде объектов языка Python, аппроксимацию таблиц скоростей реакций с помощью функции~(\ref{eq:reaclib_format}) и вывод данных в формате REACLIB в текстовый файл. В настоящей работе все модификации библиотеки REACLIB, в том числе аппроксимации функции~\ref{eq:reaclib_format}, выполнены при помощи пакета ratelib.
+Для упрощения работы с базами данных астрофизических скоростей реакций в формате REACLIB в рамках настоящей работы на языке Python был реализован и опубликован в открытом доустпе пакет ratelib, доступный для загрузки с помощью каталога Python-пакетов PyPI\footnote{\href{https://pypi.org/project/ratelib/}{https://pypi.org/project/ratelib/}}. Пакет ratelib поддерживает загрузку базы данных из текстового файла, представление нуклидов, скоростей реакций и их коллекций в виде объектов языка Python, аппроксимацию таблиц скоростей реакций с помощью функции~(\ref{eq:reaclib_format}) и вывод данных в формате REACLIB в текстовый файл. В настоящей работе все модификации библиотеки REACLIB, в том числе аппроксимации функции~\ref{eq:reaclib_format}, выполнены при помощи пакета ratelib.
 
 \subsubsection{Критерий нейтроноизбыточности}
 Подставляя скорости $(n,\gamma)$ в библиотеку REACLIB, мы ограничивались только реакциями на нейтроноизбыточных изотопах. Для других ядер стандартные значения скоростей оставлялись неизменными.
