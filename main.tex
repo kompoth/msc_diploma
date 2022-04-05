@@ -42,6 +42,7 @@
 \setlength\cftparskip{1pt}
 \setlength\cftbeforesecskip{6pt}
 \setlength\cftaftertoctitleskip{2pt}
+\setcounter{tocdepth}{2}  % set toc levels
 
 % custom sections
 \usepackage{titlesec}
@@ -67,23 +68,18 @@
 \newpage
 
 % Theoretical part
-\input tex/pt1_statmodel/intro.tex
+\input tex/pt1_statmodel/main.tex
 \newpage
-\input tex/pt2_masses/intro.tex
-\input tex/pt2_masses/frdm.tex
-\input tex/pt2_masses/hfb.tex
-\input tex/pt2_masses/lmr.tex
+\input tex/pt2_masses/main.tex
 \newpage
 
 % Calculation part
-\input tex/pt3_reaclib/intro.tex
-\input tex/pt3_reaclib/talys.tex
-\input tex/pt3_reaclib/ratelib.tex
-\input tex/pt3_reaclib/weakfit.tex
+\input tex/pt3_reaclib/main.tex
 \newpage
-\input tex/pt4_skynet/intro.tex
+\input tex/pt4_skynet/main.tex
 \newpage
 
+% Ending
 \input tex/outro.tex
 \newpage
 \input tex/bib.tex
