@@ -57,8 +57,10 @@
 \titleformat{\paragraph}[hang]
   {\it}{}{}{}
   
- \let \savenumberline \numberline
+\let \savenumberline \numberline
 \def \numberline#1{\savenumberline{#1.}}
+
+\newcommand{\nsm}{НЗ\raise0.5ex\hbox{\small 2}}
 
 \begin{document}
 
