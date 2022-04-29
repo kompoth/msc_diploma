@@ -18,6 +18,9 @@
 \usepackage{graphics,mathtools}
 \usepackage{listings}
 
+% for loops
+\usepackage{pgffor}
+
 % links in text
 \usepackage{hyperref}
 \hypersetup{
@@ -34,8 +37,9 @@
 \usepackage[font=small,labelfont=bf]{caption}
 % dots in caption numberings
 \captionsetup{labelsep = period}
-% to enable subfigures
+% to enable subfigures and enumerate them with cyr letters
 \usepackage{subcaption}
+\renewcommand\thesubfigure{\asbuk{subfigure}}
 % add bibliography to contents
 \usepackage[nottoc]{tocbibind}
 
