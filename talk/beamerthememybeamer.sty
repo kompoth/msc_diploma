@@ -1,0 +1,73 @@
+\mode<presentation>
+
+% Fonts
+\usefonttheme{serif}
+\setbeamerfont{title}{size=\Large}
+\setbeamerfont{subtitle}{size=\large}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{institute}{size=\small, shape=\itshape}
+\setbeamerfont{date}{size=\normalsize}
+\setbeamerfont{footline}{size=\small}
+\setbeamerfont{frametitle}{size=\Large}
+
+% Colors
+\definecolor{physblue}{HTML}{1a5dad}
+\setbeamercolor{footline}{fg=physblue}
+\setbeamercolor{title}{fg=physblue}
+\setbeamercolor{subtitle}{fg=black}
+\setbeamercolor{author}{fg=black}
+\setbeamercolor{institute}{fg=black}
+\setbeamercolor{frametitle}{fg=physblue}
+\setbeamercolor{subtitle}{fg=black}
+
+% Footnote
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{footline}{ 
+  \vfill
+  \ifnum \theframenumber=0
+    % do nothing
+  \else
+    \hfill
+    \insertframenumber{}
+  \fi
+  \hspace{0.4em}
+  \vspace{0.8em}
+}
+
+
+\setbeamertemplate{title page}{ 
+  
+  \begin{center}
+  \usebeamerfont{subtitle} \insertsubtitle \par \smallskip
+  {
+    \usebeamercolor[fg]{title}
+    \usebeamercolor{title} \usebeamerfont{title} \inserttitle \par
+  }
+ 
+  \vfill
+
+  \usebeamerfont{author} \insertauthor \par
+  \usebeamerfont{institute} \insertinstitute \par
+  \insertdate \par
+  \bigskip
+   
+  \includegraphics[height=0.14\textheight]{../pics/physlogo.pdf}
+  %\includegraphics[height=0.14\textheight]{pics/sinplogo.pdf}
+  \end{center}
+}
+
+\setbeamertemplate{endpage}{
+  \setbeamertemplate{footline}{}
+    \begin{frame}
+      \large \centering
+      %Thank you for your attention!
+      Спасибо за внимание!
+      \bigskip
+   
+      %\includegraphics[height=0.14\textheight]{pics/sinplogo.pdf}
+      %\hspace{1em}
+      \includegraphics[height=0.14\textheight]{../pics/physlogo.pdf}
+    \end{frame}
+}
+
+\mode<all>
