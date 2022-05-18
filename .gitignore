@@ -1,6 +1,10 @@
-diploma.*
+*.pdf
+!pics/*.pdf
+*-eps-converted-to.pdf
+
 *.aux
 *.log
 *.out
 *.toc
-*-eps-converted-to.pdf
+*.nav
+*.snm
