@@ -32,7 +32,7 @@
     \end{itemize}
     \center
     \includegraphics[width=\textwidth]{../pics/lodders.pdf}
-    \scriptsize
+    \footnotesize
     По данным \textit{Lodders 2003}.
   }
 
@@ -46,7 +46,7 @@
     
     \begin{block}{\bf \small Особенности $r$-процесса}
       \small
-      Экстремальные астрофизические условия и участие \textbf{сверхнейтроноизбыточных} ядер.
+      Экстремальные астрофизические условия и участие \textbf{сильно нейтроноизбыточных} ядер.
     \end{block}
   }
 
@@ -68,44 +68,73 @@
         \textbf{их характеристики приходится получать из моделей}
     \end{itemize}
   
-    \begin{block}{\bf \small Цель работы}
+    \begin{block}{\bf \small Ядерные данные}
       \small
-      Выяснить, каково влияние неопределенностей ядерных данных, полученных из
-      теоретических моделей, на результаты моделирования $r$-процесса.
+      Влияют на моделирование $r$-процесса через величины астрофизических 
+      \textbf{скоростей реакций $\color{blue}\lambda_k$}.
     \end{block}
   }
 
   \frame{
     \frametitle{Астрофизические скорости реакций}
-    О скоростях:
+    \small
+    \textbf{Скорость реакции $\color{blue}\lambda_k$} --- это вероятность протекания реакции на единицу времени на единицу концентрации каждой исходной частицы.
+    
+    \begin{equation*}
+      \displaystyle
+      \lambda(T) = \int_0^\infty \sigma(E) \rho(E, T) dE,
+    \end{equation*}
+    где $\rho(E, T)$ --- энергетическое распределение.
+    
+    \vspace{0.5cm}
+
     \begin{itemize}
-      \item Что это такое
-      \item Как влияют
-      \item Как вычислять (формула)
+      \item Для $r$-процесса $\sigma(E)$ можно получить лишь из теоретических моделей (статистический подход Хаузера--Фешбаха).
+      \item Для этого нужно характеристики нейтроноизбыточных ядер (например, массы), которые \textbf{тоже получают из моделей}.
     \end{itemize}
+    
+    \begin{block}{\bf \small Влияние ядерных моделей на моделирование $r$-процесса}
+      \small
+      Можно проанализировать, \textbf{варьируя массовую модель} при расчете астрофизических скоростей реакций.
+    \end{block}
   }
 
   \frame{
     \frametitle{Модели масс экзотических ядер}
-    Об использованных массовых моделях:
+    \small
+    Рассмотрены разные подходы к описанию ядер:
     \begin{itemize}
-      \item Сказать, что массы -- важные параметры расчета сечений
-      \item Перечислить и кратко описать
-      \item Чуть подробнее про LMR (график фитов)
-      \item Сравнение точностей (график)
+      \item HFB-24 \textit{Goriely et al 2013} --- микроскопическая модель
+      \item FRDM2012 \textit{M\"oller et al 2016} --- макро-микроскопическая
+      \item LMR2021 \textit{Владимирова и др. 2022} --- локальные массовые\\
+      \hspace{6cm} соотношения
     \end{itemize}
+      
+      \includegraphics[width=\textwidth]{../pics/deviations-scaled.pdf}
   }
 
   \frame{
     \frametitle{Расчет сечений и скоростей $(n,\gamma)$}
-    Показать промежуточные результаты:
-    \begin{itemize}
-      \item О статистической модели и о TALYS
-      \item 2-3 графика сечений 
-      \item 2-3 графика скоростей
-      \item О создании библиотек реакций на базе REACLIB
-      \item О ratelib
-    \end{itemize}
+    \small
+    Расчет производился с помощью пакета TALYS \textit{Koning et al 2019}. 
+    \vspace{0.2cm}
+
+    \center
+    \begin{minipage}{0.42\textwidth}
+      \center
+      $^{236}\text{Pb}$
+      \includegraphics[width=\textwidth]{../pics/cs_pb236.pdf}
+      \includegraphics[width=\textwidth]{../pics/ng_fit_pb236.pdf}
+    \end{minipage}
+    \begin{minipage}{0.42\textwidth}
+      \center
+      $^{237}\text{Pb}$
+      \includegraphics[width=\textwidth]{../pics/cs_pb237.pdf}
+      \includegraphics[width=\textwidth]{../pics/ng_fit_pb237.pdf}
+    \end{minipage}
+    
+    Скорости $(n,\gamma)$ $\color{blue}\xrightarrow{\text{пакет ratelib}}$
+    база данных в формате REACLIB 
   }
 
   \frame{
