@@ -139,13 +139,25 @@
 
   \frame{
     \frametitle{Скорости $\beta$-распадов}
-    Как я фитировал скорости распадов:
+    \small
     \begin{itemize}
-      \item Почему их вообще надо фитировать (график рис. 8)
-      \item Почему я считаю, что нашей точности вполне достаточно
-      \item Модельные функции
-      \item Результаты (2 графика)
+    \item Для каждой реакции $(n,\gamma)$ нужно внести в базу данных $\beta$-распад продукта, чтобы не было накопления нестабильных ядер. 
+    \item Если в REACLIB нет такого распада, получаем его аппроксимацией.
     \end{itemize}
+
+    \center
+    \begin{minipage}{0.49\textwidth}
+      \center
+      Тербий, $Z = 65$
+      \includegraphics[width=\textwidth]{../pics/decay_fit65.pdf}
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+      \center
+      Свинец, $Z = 82$
+      \includegraphics[width=\textwidth]{../pics/decay_fit82.pdf}
+    \end{minipage}
+    
+    Модельная функция --- правило Сарджента: $\lambda_\beta \sim Q_\beta^5$
   }
   
   \frame{
