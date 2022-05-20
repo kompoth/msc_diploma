@@ -5,6 +5,7 @@
 
 \usetheme{mybeamer}
 
+\usepackage[most]{tcolorbox}
 
 \title{Влияние точности входных параметров моделей ядерных реакций на предсказанные выходы $r$-процесса}
 \subtitle{Магистерская диссертация}
@@ -20,34 +21,20 @@
   \frame[noframenumbering] {
     \titlepage
   }
-  
-  \frame{
-    \frametitle{Распространенности ядер в Солнечной системе}
-    \small
-    Проблема нуклеосинтеза тяжелых изотопов:
-    \begin{itemize}
-      \item Легкие изотопы образуются в реакциях звездного горения.
-      \item Синтез ядер тяжелее железа энергетически невыгоден.
-      \item Таких ядер действительно довольно мало. 
-    \end{itemize}
-    \center
-    \includegraphics[width=\textwidth]{../pics/lodders.pdf}
-    \footnotesize
-    По данным \textit{Lodders 2003}.
-  }
 
   \frame{
-    \frametitle{Механизм нейтронного захвата}
+    \frametitle{Образование тяжелых элементов}
     \small
-    Синтез тяжелых ядер в основном обеспечивают $s$- и $r$-процесс.
-    \begin{centering}
+    Особенности $r$-процесса:
+    \begin{itemize}
+      \item Экстремальные условия ($T \approx 1-5$~ГК)
+      \item Участие \textbf{сильно нейтроноизбыточных} ядер
+    \end{itemize}
+    \center
     \includegraphics[width=0.9\textwidth]{../pics/tracks.pdf}
-    \end{centering}
     
-    \begin{block}{\bf \small Особенности $r$-процесса}
-      \small
-      Экстремальные астрофизические условия и участие \textbf{сильно нейтроноизбыточных} ядер.
-    \end{block}
+    \vspace{0.3cm}
+    Изучение сводится к \textbf{компьютерному моделированию}.
   }
 
   \frame{
@@ -67,12 +54,13 @@
       \item Недостаток данных о задействованных экзотических ядрах, \\
         \textbf{их характеристики приходится получать из моделей}
     \end{itemize}
-  
-    \begin{block}{\bf \small Ядерные данные}
-      \small
-      Влияют на моделирование $r$-процесса через величины астрофизических 
+    
+
+    \begin{tcolorbox}[colback=blue!10, colframe=blue!10]
+      Ядерные данные влияют на моделирование $r$-процесса через 
+      величины астрофизических 
       \textbf{скоростей реакций $\color{blue}\lambda_k$}.
-    \end{block}
+    \end{tcolorbox}
   }
 
   \frame{
@@ -93,21 +81,21 @@
       \item Для этого нужно характеристики нейтроноизбыточных ядер (например, массы), которые \textbf{тоже получают из моделей}.
     \end{itemize}
     
-    \begin{block}{\bf \small Влияние ядерных моделей на моделирование $r$-процесса}
-      \small
-      Можно проанализировать, \textbf{варьируя массовую модель} при расчете астрофизических скоростей реакций.
-    \end{block}
+    
+    \begin{tcolorbox}[colback=blue!10, colframe=blue!10]
+      Неопределенности ядерных моделей непосредственно\\
+      влияют на расчеты нуклеосинтеза через скорости реакций.
+    \end{tcolorbox}
   }
 
   \frame{
     \frametitle{Модели масс экзотических ядер}
     \small
-    Рассмотрены разные подходы к описанию ядер:
+    Нами рассмотрены разные подходы к описанию ядер:
     \begin{itemize}
-      \item HFB-24 \textit{Goriely et al 2013} --- микроскопическая модель
-      \item FRDM2012 \textit{M\"oller et al 2016} --- макро-микроскопическая
-      \item LMR2021 \textit{Владимирова и др. 2022} --- локальные массовые\\
-      \hspace{6cm} соотношения
+      \item HFB-24 \textit{\scriptsize Goriely et al 2013} --- микроскопическая модель
+      \item FRDM2012 \textit{\scriptsize M\"oller et al 2016} --- макро-микроскопическая
+      \item LMR2021 \textit{\scriptsize Владимирова и др 2022} --- метод локальных соотношений
     \end{itemize}
       
       \includegraphics[width=\textwidth]{../pics/deviations-scaled.pdf}
@@ -116,7 +104,7 @@
   \frame{
     \frametitle{Расчет сечений и скоростей $(n,\gamma)$}
     \small
-    Расчет производился с помощью пакета TALYS \textit{Koning et al 2019}. 
+    Вычисления выполнены с помощью пакета TALYS \textit{\scriptsize Koning et al 2019}. 
     \vspace{0.2cm}
 
     \center
@@ -134,7 +122,7 @@
     \end{minipage}
     
     Скорости $(n,\gamma)$ $\color{blue}\xrightarrow{\text{пакет ratelib}}$
-    база данных в формате REACLIB 
+    база данных REACLIB \textit{\scriptsize Cyburt et al 2010}
   }
 
   \frame{
@@ -161,35 +149,70 @@
   }
   
   \frame{
-    \frametitle{Астрофизические параметры модели}
+    \frametitle{Моделирование $r$-процесса}
+    \small
+    Модель $r$-процесса в выбросах при слиянии нейтронных звезд.
     \begin{itemize}
-      \item Чаще всего рассматривают сценарий NSM
-      \item Начальные условия
-      \item Вычисление начальной композиции и плотности
-      \item Как меняется плотность в симуляции
-      \item Как меняются остальные параметры
+    \item Начальные условия: 
+      $T = 6$~ГК, $Y_e = 0.1$, $s = 10~\frac{k_B}{\text{барион}}$.
+    \item Вещество выброса расширяется с постоянной скоростью.
+    \item Исходный состав вещества определяется условием равновесия.
     \end{itemize}
+    
+    \center
+    \includegraphics[width=0.8\textwidth]{../pics/distr_1000.pdf}
+    
+    Расчет с помощью библиотеки SkyNet \textit{\scriptsize Lippuner Roberts 2017}.
   }
   
   \frame{
     \frametitle{Эволюция выходов $r$-изотопов}
-    \begin{itemize}
-      \item Анимация
-      \item Что означает тонкая линия и ее исчезновение
-      \item HFB запаздывает!
-    \end{itemize}
+    \small \center
+    \begin{minipage}{0.49\textwidth}
+      \center
+      ${}^{179}\text{Tb}$
+      \includegraphics[width=\textwidth]{../pics/y_65_179.pdf}
+      ${}^{190}\text{Tb}$
+      \includegraphics[width=\textwidth]{../pics/y_65_190.pdf}
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+      \center
+      ${}^{180}\text{Tb}$
+      \includegraphics[width=\textwidth]{../pics/y_65_180.pdf}
+      ${}^{191}\text{Tb}$
+      \includegraphics[width=\textwidth]{../pics/y_65_191.pdf}
+    \end{minipage}
   }
 
   \frame{
-    \frametitle{Итоговое массовое распределение}
+    \frametitle{Результаты}
     \begin{itemize}
-      \item График распределения
-      \item Про неопределенности
-      \item Про положение пиков
+      \item С помощью TALYS и ядерных моделей HFB-24, FRDM2012 и LMR2021 получены скорости реакций $(n,\gamma)$ $r$-процесса.
+      \item Из этих данных с помощью нашего пакета ratelib составлены базы данных астрофизических реакций.
+      \item Эти базы данных использованы для моделирования $r$-процесса в слиянии нейтронных звезд на основе библиотеки SkyNet.
+      \item Изучено влияние выбора массовой модели на симуляцию $r$-процесса.
     \end{itemize}
   }
-
+  
   \usebeamertemplate{endpage}
+
+  \frame{
+    \frametitle{Распространенность ядер в Солнечной системе}
+    \small
+    \begin{itemize}
+      \item Легкие ядра образуются в реакциях звездного горения.
+      \item Синтез ядер за железом энергетически невыгоден.
+      \item Тяжелых изотопов действительно много меньше, чем легких.
+    \end{itemize}
+
+    \center
+    \includegraphics[width=\textwidth]{../pics/lodders_vs_ame.pdf}
+
+    \begin{tcolorbox}[colback=blue!10, colframe=blue!10]
+      \center
+      Образование тяжелых ядер обеспечено $s$- и $r$-процессами.
+    \end{tcolorbox}
+  }
 
   \frame{
     \frametitle{Appendix\\Нейтронный захват за границей существования}
