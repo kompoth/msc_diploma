@@ -6,6 +6,7 @@
 \usetheme{mybeamer}
 
 \usepackage[most]{tcolorbox}
+\usepackage[percent]{overpic}
 
 \title{Влияние точности входных параметров моделей ядерных реакций на предсказанные выходы $r$-процесса}
 \subtitle{Магистерская диссертация}
@@ -23,18 +24,42 @@
   }
 
   \frame{
+    \frametitle{Распространенность ядер в Солнечной системе}
+    \small
+    \begin{itemize}
+      \item Легкие ядра образуются в реакциях звездного горения.
+      \item Синтез ядер за железом энергетически невыгоден.
+      \item Тяжелых изотопов действительно много меньше, чем легких.
+    \end{itemize}
+
+    \center
+    \includegraphics[width=\textwidth]{../pics/lodders_vs_ame.pdf}
+
+    \begin{tcolorbox}[colback=blue!10, colframe=blue!10]
+      \center
+      Образование тяжелых ядер обеспечено $s$- и $r$-процессами.
+    \end{tcolorbox}
+  }
+
+  \frame{
     \frametitle{Образование тяжелых элементов}
     \small
+    \begin{tcolorbox}[colback=blue!10, colframe=blue!10, top=2pt, bottom=2pt,
+                      before skip=5pt, after skip=5pt]
+      \center
+      Основной источник ядер за железом --- $r$-процесс. 
+    \end{tcolorbox}
+
+    \begin{center}
+    \includegraphics[width=0.9\textwidth]{../pics/tracks.pdf}
+    \end{center}
+
+    \vspace{0.3cm}
     Особенности $r$-процесса:
     \begin{itemize}
       \item Экстремальные условия ($T \approx 1-5$~ГК)
       \item Участие \textbf{сильно нейтроноизбыточных} ядер
     \end{itemize}
-    \center
-    \includegraphics[width=0.9\textwidth]{../pics/tracks.pdf}
-    
-    \vspace{0.3cm}
-    Изучение сводится к \textbf{компьютерному моделированию}.
   }
 
   \frame{
@@ -81,24 +106,47 @@
       \item Для этого нужно характеристики нейтроноизбыточных ядер (например, массы), которые \textbf{тоже получают из моделей}.
     \end{itemize}
     
-    
-    \begin{tcolorbox}[colback=blue!10, colframe=blue!10]
-      Неопределенности ядерных моделей непосредственно\\
-      влияют на расчеты нуклеосинтеза через скорости реакций.
-    \end{tcolorbox}
+    Ядерные модели и их неопределенности непосредственно\\
+    влияют на расчеты нуклеосинтеза через скорости реакций.
   }
 
-  \frame{
+  \begin{frame}
     \frametitle{Модели масс экзотических ядер}
     \small
-    Нами рассмотрены разные подходы к описанию ядер:
+    Вдали от долины стабильности используются разные подходы к вычислению масс ядер. 
     \begin{itemize}
       \item HFB-24 \textit{\scriptsize Goriely et al 2013} --- микроскопическая модель
       \item FRDM2012 \textit{\scriptsize M\"oller et al 2016} --- макро-микроскопическая
       \item LMR2021 \textit{\scriptsize Владимирова и др 2022} --- метод локальных соотношений
     \end{itemize}
-      
-      \includegraphics[width=\textwidth]{../pics/deviations-scaled.pdf}
+    
+    \begin{center}
+      \includegraphics[width=0.85\textwidth]{../pics/deviations-scaled.pdf}
+    \end{center}
+
+    \begin{tcolorbox}[colback=blue!10, colframe=blue!10, before skip=-7pt, 
+                      top=2pt, bottom=1pt]
+      \center
+      Как выбор массовой модели влияет на $r$-процесс? 
+    \end{tcolorbox}
+  \end{frame}
+  
+  \frame{
+    \frametitle{План моделирования $r$-процесса}
+    \small
+    \begin{itemize}
+      \item Формирование списка изотопов, участвующих в $r$-процессе для каждой массовой модели (порядка $7 \cdot 10^3$ изотопов).
+      \item Расчет сечений и скоростей реакций $(n,\gamma)$ на этих изотопах для каждой массовой модели.
+      \item Включение данных по $\beta^-$-распадам.
+      \item Создание исходных наборов данных для моделирования $r$-процесса в стандартном формате REACLIB.
+      \item Разработка расчетной модели $r$-процесса в реалистичном астрофизическом сценарии на основе системы SkyNet.
+      \item Расчет $r$-процесса и анализ полученных результатов.
+    \end{itemize}
+  }
+
+  \frame{
+    \frametitle{Изотопы, входящие в состав массовых моделей}
+    4 NZ-диаграммы для массовых таблиц
   }
 
   \frame{
@@ -126,11 +174,25 @@
   }
 
   \frame{
+    \frametitle{Нейтронный захват за границей существования}
+    \small
+    Модели ядерных масс отличаются поведением drip-line.\\
+    Учитывать ли реакции $(n,\gamma)$ для ядер с $B_n < 0$ внутри drip-line?\\
+    Учитывать ли реакции $(n,\gamma)$ для ядер за drip-line?
+
+    \center
+    \begin{overpic}[width=0.75\textwidth]{../pics/rates_vs_A_tb-scaled.pdf}
+      \put(60,30) {\large Tb, $Z=65$}
+    \end{overpic}
+  }
+  
+  \frame{
     \frametitle{Скорости $\beta$-распадов}
     \small
     \begin{itemize}
-    \item Для каждой реакции $(n,\gamma)$ нужно внести в базу данных $\beta$-распад продукта, чтобы не было накопления нестабильных ядер. 
-    \item Если в REACLIB нет такого распада, получаем его аппроксимацией.
+    \item Помимо $(n,\gamma)$ $r$-процесс определяется $\beta$-распадами их продуктов. В наборе входных данных наличие или отсутствие $\beta$-распадов должно быть согласовано с реакциями $(n,\gamma)$, чтобы исключить нефизическое накопление нестабильных ядер.
+    \item Для многих рассмотренных изотопов нет данных  по  $T_{1/2}(\beta^-)$.
+    \item В этом случае можно применить аппроксимацию.
     \end{itemize}
 
     \center
@@ -147,22 +209,44 @@
     
     Модельная функция --- правило Сарджента: $\lambda_\beta \sim Q_\beta^5$
   }
-  
+ 
   \frame{
-    \frametitle{Моделирование $r$-процесса}
+    \frametitle{Подробнее об аппроксимации $\beta$-распадов}
     \small
-    Модель $r$-процесса в выбросах при слиянии нейтронных звезд.
+    В области нейтронного избытка обычный $\beta^-$-распад подавлен распадами с вылетом нейтронов.   
+    \begin{center}
+      \begin{overpic}[width=0.9\textwidth]{../pics/decays_tb.pdf}
+        \put(17,52) {\large Tb, $Z=65$}
+      \end{overpic}
+    \end{center}
+    Мы аппроксимируем сумму скоростей всех типов $\beta^-$-распада, предполагая, что при стремлении к статистическому равновесию $(n,\gamma)/(\gamma,n)$ точное число нейтронов в ядре несущественно.
+  }
+
+  \frame{
+    \frametitle{Реалистичная модель $r$-процесса}
+    \small
     \begin{itemize}
+    \item С помощью системы SkyNet \textit{\scriptsize Lippuner, Roberts 2017} мы подготовили расчетную модель $r$-процесса.
+    \item Используется реалистичный сценарий выброса вещества при \textbf{слиянии нейтронных звезд} \textit{\scriptsize Korobkin et al 2012}.
     \item Начальные условия: 
       $T = 6$~ГК, $Y_e = 0.1$, $s = 10~\frac{k_B}{\text{барион}}$.
-    \item Вещество выброса расширяется с постоянной скоростью.
-    \item Исходный состав вещества определяется условием равновесия.
+    \item Вещество выброса расширяется с постоянной скоростью:
+    \begin{equation*}
+      \rho(t) \sim t^{-3}
+    \end{equation*}
+    \item Начальный состав вещества определяется астрофизическим уравнением состояния, встроенным в SkyNet.
     \end{itemize}
-    
+  }
+
+  \frame{
+    \frametitle{Итоговое распределение $r$-изотопов}
+    \small
     \center
-    \includegraphics[width=0.8\textwidth]{../pics/distr_1000.pdf}
-    
-    Расчет с помощью библиотеки SkyNet \textit{\scriptsize Lippuner Roberts 2017}.
+    \includegraphics[width=0.9\textwidth]{../pics/distr_1000.pdf}
+    \begin{itemize}
+      \item FRDM2012 лидирует по величине выходов почти для всех $A$. 
+      \item FRDM2012 и LMR2021 дают схожие глубокие минимумы, коррелирующие с изменением четности.
+    \end{itemize}
   }
   
   \frame{
@@ -170,20 +254,41 @@
     \small \center
     \begin{minipage}{0.49\textwidth}
       \center
-      ${}^{179}\text{Tb}$
-      \includegraphics[width=\textwidth]{../pics/y_65_179.pdf}
-      ${}^{190}\text{Tb}$
-      \includegraphics[width=\textwidth]{../pics/y_65_190.pdf}
+      \begin{overpic}[width=\textwidth]{../pics/y_65_188-talk.pdf}
+        \put(70,50) {${}^{188}\text{Tb}$}
+      \end{overpic}
+      \begin{overpic}[width=\textwidth]{../pics/y_65_190-talk.pdf}
+        \put(70,50) {${}^{190}\text{Tb}$}
+      \end{overpic}
     \end{minipage}
     \begin{minipage}{0.49\textwidth}
       \center
-      ${}^{180}\text{Tb}$
-      \includegraphics[width=\textwidth]{../pics/y_65_180.pdf}
-      ${}^{191}\text{Tb}$
-      \includegraphics[width=\textwidth]{../pics/y_65_191.pdf}
+      \begin{overpic}[width=\textwidth]{../pics/y_65_189-talk.pdf}
+        \put(70,50) {${}^{189}\text{Tb}$}
+      \end{overpic}
+      \begin{overpic}[width=\textwidth]{../pics/y_65_191-talk.pdf}
+        \put(70,50) {${}^{191}\text{Tb}$}
+      \end{overpic}
     \end{minipage}
+    
+    \begin{itemize}
+      \item Запаздывающий максимум выходов HFB-24.
+      \item Дополнительный пик ${}^{191}\text{Tb}$ --- фрагмент пути $r$-процесса.
+    \end{itemize}
   }
 
+  \frame{
+    \frametitle{Влияние массовой модели на температуру}
+      \small
+      $r$-процесс может нагревать среду за счет $\beta$-распадов. Как выбор массовой модели влияет на этот нагрев?
+
+    \center
+    \includegraphics[width=\textwidth]{../pics/temp.pdf}
+
+    Наши три базы данных отличаются по распадам только вблизи границы отделения, поэтому разница малозаметна, но она есть.
+      
+  }
+  
   \frame{
     \frametitle{Результаты}
     \begin{itemize}
@@ -195,24 +300,6 @@
   }
   
   \usebeamertemplate{endpage}
-
-  \frame{
-    \frametitle{Распространенность ядер в Солнечной системе}
-    \small
-    \begin{itemize}
-      \item Легкие ядра образуются в реакциях звездного горения.
-      \item Синтез ядер за железом энергетически невыгоден.
-      \item Тяжелых изотопов действительно много меньше, чем легких.
-    \end{itemize}
-
-    \center
-    \includegraphics[width=\textwidth]{../pics/lodders_vs_ame.pdf}
-
-    \begin{tcolorbox}[colback=blue!10, colframe=blue!10]
-      \center
-      Образование тяжелых ядер обеспечено $s$- и $r$-процессами.
-    \end{tcolorbox}
-  }
 
   \frame{
     \frametitle{Подробнее о модели LMR2021}
@@ -227,39 +314,5 @@
 
     \includegraphics[width=0.9\textwidth]{../pics/delta_np-scaled.pdf}
 
-  }
-
-  \frame{
-    \frametitle{Нейтронный захват за границей существования}
-    \small
-    Таблицы теоретических ядерных масс обычно выходят за границы существования.
-    Учитывать ли реакции $(n,\gamma)$ для ядер с $B_n < 0$?
-
-    \center
-    \includegraphics[width=0.75\textwidth]{../pics/rates_vs_A_tb-scaled.pdf}
-  }
-  
-  \frame{
-    \frametitle{Подробнее об аппроксимации слабых распадов}
-    \small
-    В области нейтронного избытка обычный $\beta$-распад подавлен распадами с вылетом нейтронов. В $r$-процессе любой недостаток нейтронов в ядре очень быстро компенсируется.
-   
-    \center
-    \includegraphics[width=\textwidth]{../pics/decays_tb.pdf}
-    
-    \scriptsize
-    Скорости слабых распадов \textbf{тербия} из базы данных REACLIB.
-  }
-  
-  \frame{
-    \frametitle{Влияние массовой модели на температуру}
-      \small
-      $r$-процесс может нагревать среду за счет $\beta$-распадов. Как выбор массовой модели влияет на этот нагрев?
-
-    \center
-    \includegraphics[width=\textwidth]{../pics/temp.pdf}
-
-    Наши три базы данных отличаются по распадам только вблизи границы отделения, поэтому разница малозаметна, но она есть.
-      
   }
 \end{document}
