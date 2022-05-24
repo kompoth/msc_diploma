@@ -26,6 +26,7 @@
   \frame{
     \frametitle{Распространенность ядер в Солнечной системе}
     \small
+    \textbf{Нуклеосинтез} --- совокупность процессов естественного образования ядер химических элементов.
     \begin{itemize}
       \item Легкие ядра образуются в реакциях звездного горения.
       \item Синтез ядер за железом энергетически невыгоден.
@@ -34,21 +35,14 @@
 
     \center
     \includegraphics[width=\textwidth]{../pics/lodders_vs_ame.pdf}
-
-    \begin{tcolorbox}[colback=blue!10, colframe=blue!10]
-      \center
-      Образование тяжелых ядер обеспечено $s$- и $r$-процессами.
-    \end{tcolorbox}
+  
   }
 
   \frame{
     \frametitle{Образование тяжелых элементов}
     \small
-    \begin{tcolorbox}[colback=blue!10, colframe=blue!10, top=2pt, bottom=2pt,
-                      before skip=5pt, after skip=5pt]
-      \center
-      Основной источник ядер за железом --- $r$-процесс. 
-    \end{tcolorbox}
+    \center
+    \textbf{Основной источник ядер за железом --- $r$-процесс.}
 
     \begin{center}
     \includegraphics[width=0.9\textwidth]{../pics/tracks.pdf}
@@ -102,7 +96,7 @@
     \vspace{0.5cm}
 
     \begin{itemize}
-      \item Для $r$-процесса $\sigma(E)$ можно получить лишь из теоретических моделей (статистический подход Хаузера--Фешбаха).
+      \item Для $r$-процесса $\sigma(E)$ можно получить лишь из теоретических моделей ядерных реакций.
       \item Для этого нужно характеристики нейтроноизбыточных ядер (например, массы), которые \textbf{тоже получают из моделей}.
     \end{itemize}
     
@@ -121,27 +115,29 @@
     \end{itemize}
     
     \begin{center}
-      \includegraphics[width=0.85\textwidth]{../pics/deviations-scaled.pdf}
+      \includegraphics[width=0.8\textwidth]{../pics/deviations-scaled.pdf}
     \end{center}
 
     \begin{tcolorbox}[colback=blue!10, colframe=blue!10, before skip=-7pt, 
                       top=2pt, bottom=1pt]
       \center
-      Как выбор массовой модели влияет на $r$-процесс? 
+      \textbf{Основной вопрос}:
+      Как выбор массовой модели влияет на моделирование $r$-процесса? 
     \end{tcolorbox}
   \end{frame}
   
   \frame{
-    \frametitle{План моделирования $r$-процесса}
+    \frametitle{Изучение влияния массовых моделей на выходы $r$-процесса}
+    \textbf{План:}
     \small
-    \begin{itemize}
-      \item Формирование списка изотопов, участвующих в $r$-процессе для каждой массовой модели (порядка $7 \cdot 10^3$ изотопов).
-      \item Расчет сечений и скоростей реакций $(n,\gamma)$ на этих изотопах для каждой массовой модели.
+    \begin{enumerate}
+      %\item Формирование списка изотопов, участвующих в $r$-процессе для каждой массовой модели (порядка $7 \cdot 10^3$ изотопов).
+      \item Расчет сечений и скоростей реакций $(n,\gamma)$ на этих изотопах для каждой массовой модели (\textbf{тысячи реакций для каждой модели}).
       \item Включение данных по $\beta^-$-распадам.
       \item Создание исходных наборов данных для моделирования $r$-процесса в стандартном формате REACLIB.
       \item Разработка расчетной модели $r$-процесса в реалистичном астрофизическом сценарии на основе системы SkyNet.
       \item Расчет $r$-процесса и анализ полученных результатов.
-    \end{itemize}
+    \end{enumerate}
   }
 
   \frame{
@@ -171,25 +167,54 @@
   }
 
   \frame{
-    \frametitle{Расчет сечений и скоростей $(n,\gamma)$}
+    \frametitle{Расчет сечений $(n,\gamma)$}
     \small
-    Вычисления выполнены с помощью пакета TALYS \textit{\scriptsize Koning et al 2019}. 
-    \vspace{0.2cm}
-
     \center
-    \begin{minipage}{0.42\textwidth}
+    \begin{minipage}{0.49\textwidth}
       \center
-      $^{236}\text{Pb}$
-      \includegraphics[width=\textwidth]{../pics/cs_pb236.pdf}
-      \includegraphics[width=\textwidth]{../pics/ng_fit_pb236.pdf}
+      \begin{overpic}[width=\textwidth]{../pics/cs_tb186.pdf}
+        \put(40,30) {$^{186}\text{Tb}$}
+      \end{overpic}
+      \begin{overpic}[width=\textwidth]{../pics/cs_pb236.pdf}
+        \put(40,30) {$^{236}\text{Pb}$}
+      \end{overpic}
     \end{minipage}
-    \begin{minipage}{0.42\textwidth}
+    \begin{minipage}{0.49\textwidth}
       \center
-      $^{237}\text{Pb}$
-      \includegraphics[width=\textwidth]{../pics/cs_pb237.pdf}
-      \includegraphics[width=\textwidth]{../pics/ng_fit_pb237.pdf}
+      \begin{overpic}[width=\textwidth]{../pics/cs_tb187.pdf}
+        \put(40,30) {$^{187}\text{Tb}$}
+      \end{overpic}
+      \begin{overpic}[width=\textwidth]{../pics/cs_pb237.pdf}
+        \put(40,30) {$^{237}\text{Pb}$}
+      \end{overpic}
     \end{minipage}
     
+    Вычисления выполнены с помощью пакета TALYS \textit{\scriptsize Koning et al 2019}. 
+  }
+
+  \frame{
+    \frametitle{Расчет скоростей $(n,\gamma)$}
+    \small
+    \center
+    \begin{minipage}{0.49\textwidth}
+      \center
+      \begin{overpic}[width=\textwidth]{../pics/rate_tb186.pdf}
+        \put(40,30) {$^{186}\text{Tb}$}
+      \end{overpic}
+      \begin{overpic}[width=\textwidth]{../pics/rate_pb236.pdf}
+        \put(40,30) {$^{236}\text{Pb}$}
+      \end{overpic}
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+      \center
+      \begin{overpic}[width=\textwidth]{../pics/rate_tb187.pdf}
+        \put(40,30) {$^{187}\text{Tb}$}
+      \end{overpic}
+      \begin{overpic}[width=\textwidth]{../pics/rate_pb237.pdf}
+        \put(40,30) {$^{237}\text{Pb}$}
+      \end{overpic}
+    \end{minipage}
+
     Скорости $(n,\gamma)$ $\color{blue}\xrightarrow{\text{пакет ratelib}}$
     база данных REACLIB \textit{\scriptsize Cyburt et al 2010}
   }
@@ -293,7 +318,7 @@
     \end{minipage}
     
     \begin{itemize}
-      \item Запаздывающий максимум выходов HFB-24.
+      \item Более ранний максимум выходов HFB-24.
       \item Дополнительный пик ${}^{191}\text{Tb}$ --- фрагмент пути $r$-процесса.
     \end{itemize}
   }
