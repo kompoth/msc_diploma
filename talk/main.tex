@@ -109,9 +109,9 @@
     \small
     Вдали от долины стабильности используются разные подходы к вычислению масс ядер. 
     \begin{itemize}
-      \item HFB-24 \textit{\scriptsize Goriely et al 2013} --- микроскопическая модель
-      \item FRDM2012 \textit{\scriptsize M\"oller et al 2016} --- макро-микроскопическая
-      \item LMR2021 \textit{\scriptsize Владимирова и др 2022} --- метод локальных соотношений
+      \item HFB-24 \textit{\scriptsize Goriely 2013} --- микр. модель на основе ХФ и сил Скирма
+      \item FRDM2012 \textit{\scriptsize M\"oller 2016} --- микро-макроск. подход Струтинского
+      \item LMR2021 \textit{\scriptsize Владимирова 2022} --- метод локальных соотношений
     \end{itemize}
     
     \begin{center}
@@ -131,8 +131,8 @@
     \textbf{План:}
     \small
     \begin{enumerate}
-      %\item Формирование списка изотопов, участвующих в $r$-процессе для каждой массовой модели (порядка $7 \cdot 10^3$ изотопов).
-      \item Расчет сечений и скоростей реакций $(n,\gamma)$ на этих изотопах для каждой массовой модели (\textbf{тысячи реакций для каждой модели}).
+      \item Формирование списка изотопов, участвующих в $r$-процессе для каждой массовой модели (порядка $7 \cdot 10^3$ изотопов).
+      \item Расчет сечений и скоростей реакций $(n,\gamma)$ на этих изотопах для каждой массовой модели.
       \item Включение данных по $\beta^-$-распадам.
       \item Создание исходных наборов данных для моделирования $r$-процесса в стандартном формате REACLIB.
       \item Разработка расчетной модели $r$-процесса в реалистичном астрофизическом сценарии на основе системы SkyNet.
@@ -189,7 +189,7 @@
       \end{overpic}
     \end{minipage}
     
-    Вычисления выполнены с помощью пакета TALYS \textit{\scriptsize Koning et al 2019}. 
+    Вычисления выполнены с помощью пакета TALYS \textit{\scriptsize Koning 2019}. 
   }
 
   \frame{
@@ -216,7 +216,7 @@
     \end{minipage}
 
     Скорости $(n,\gamma)$ $\color{blue}\xrightarrow{\text{пакет ratelib}}$
-    база данных REACLIB \textit{\scriptsize Cyburt et al 2010}
+    база данных REACLIB \textit{\scriptsize Cyburt 2010}
   }
 
   \frame{
@@ -272,16 +272,25 @@
     \frametitle{Реалистичная модель $r$-процесса}
     \small
     \begin{itemize}
-    \item С помощью системы SkyNet \textit{\scriptsize Lippuner, Roberts 2017} мы подготовили расчетную модель $r$-процесса.
-    \item Используется реалистичный сценарий выброса вещества при \textbf{слиянии нейтронных звезд} \textit{\scriptsize Korobkin et al 2012}.
+    \setlength\itemsep{0em}
+    \item Модель на основе библиотеки SkyNet \textit{\scriptsize Lippuner, Roberts 2017}.
+    \item Используется реалистичный сценарий выброса вещества при \textbf{слиянии нейтронных звезд} \textit{\scriptsize Korobkin 2012, Rosswog 2013}.
     \item Начальные условия: 
       $T = 6$~ГК, $Y_e = 0.1$, $s = 10~\frac{k_B}{\text{барион}}$.
-    \item Вещество выброса расширяется с постоянной скоростью:
-    \begin{equation*}
-      \rho(t) \sim t^{-3}
-    \end{equation*}
-    \item Начальный состав вещества определяется астрофизическим уравнением состояния, встроенным в SkyNet.
+    \item Вещество выброса равномерно расширяется:
+      $\rho(t) \sim t^{-3}$
     \end{itemize}
+
+    \center
+    \begin{minipage}{0.44\textwidth}
+    \includegraphics[width=\textwidth]{../pics/merger.png}
+    \center
+    \vspace{-0.4cm}
+    \textit{Rosswog 2013}
+    \end{minipage}
+    \begin{minipage}{0.55\textwidth}
+    \includegraphics[width=\textwidth]{../pics/thermodynamic.pdf}
+    \end{minipage}
   }
 
   \frame{
@@ -291,7 +300,7 @@
     \includegraphics[width=0.9\textwidth]{../pics/distr_1000.pdf}
     \begin{itemize}
       \item FRDM2012 лидирует по величине выходов почти для всех $A$. 
-      \item FRDM2012 и LMR2021 дают схожие глубокие минимумы, коррелирующие с изменением четности.
+      \item Большие различия, в особенности при $A \approx 90$, $A = 165-180$, $A \geq 200$.
     \end{itemize}
   }
   
@@ -326,12 +335,13 @@
   \frame{
     \frametitle{Влияние массовой модели на температуру}
       \small
-      $r$-процесс может нагревать среду за счет $\beta$-распадов. Как выбор массовой модели влияет на этот нагрев?
+      $r$-процесс может нагревать среду за счет $\beta$-распадов.\\
+      Как выбор массовой модели влияет на этот нагрев?
 
     \center
-    \includegraphics[width=\textwidth]{../pics/temp.pdf}
+    \includegraphics[width=\textwidth]{../pics/temp_diff.pdf}
 
-    Наши три базы данных отличаются по распадам только вблизи границы отделения, поэтому разница малозаметна, но она есть.
+    %Наши три базы данных отличаются по распадам только вблизи границы отделения, поэтому разница малозаметна, но она есть.
       
   }
   
